@@ -1,6 +1,8 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'eu.gcr.io/fxresearch-poc/fxresearch_$SHORT_SHA', '.' ]
-#- name: 'gcr.io/cloud-builders/docker'
-#  args: [ 'push', 'eu.gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:$SHORT_SHA']
+- name: 'gcr.io/cloud-builders/gsutil' 
+  args: ['cp', '-rP', '*', 'gs://fxresearch-poc-shiny-apps/']
+#- name: 'gcr.io/cloud-builders/gcloud' 
+#  entrypoint: 'bash' args: ['gcloud' 'compute' , 'scp' , '*', 'username@instance-name:/home/directory' , '--zone=europe-west3-c', '--recurse']
 

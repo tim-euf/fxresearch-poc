@@ -25,7 +25,6 @@ RUN apt-get update && apt-get install -y \
 
 # install R packages required 
 # Change the packages list to suit your needs
-RUN R -e "install.packages('golem', repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages('shiny', repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages('shinydashboard', repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages('ggplot2', repos='http://cran.rstudio.com/')"

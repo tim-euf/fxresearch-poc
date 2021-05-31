@@ -3,26 +3,3 @@ steps:
   args: [ 'build', '-t', 'eu.gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:$SHORT_SHA', '.' ]
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'push', 'eu.gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:$SHORT_SHA']
-# Deploy container image to Cloud Run
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args:
-    [
-      'run',
-      'deploy',
-      'fxresearch',
-      '--image',
-      'eu.gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:$SHORT_SHA',
-      '--region',
-      'europe-west3',
-      '--platform',
-      'managed',
-      '--quiet',
-      '--allow-unauthenticated'
-    ]
-  env:
-    - 'PORT=8080'
-images:
-- 'eu.gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:$SHORT_SHA'
-ports:
-    - containerPort: PORT

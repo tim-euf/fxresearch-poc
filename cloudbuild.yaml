@@ -9,7 +9,7 @@ steps:
   args: ['cp', 'gs://fxresearch-poc-shiny-apps/market_data/population_by_country_2020.csv', './market_data/population_by_country_2020.csv']
 - name: 'bash'
   id: Verzeichnis auflisten2
-  args: ['ls', '-la', './market_data']
+  args: ['ls', '-la', 'market_data']
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/fxresearch-poc/rexample', '.' ]
 - name: 'gcr.io/cloud-builders/gsutil' 

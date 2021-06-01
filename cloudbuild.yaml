@@ -1,6 +1,6 @@
 steps:
 - name: 'bash'
-  args: ['ls -la .']
+  args: ['ls -la']
 - name: 'gcr.io/cloud-builders/gsutil' 
   args: ['cp', '-rP', '*', 'gs://fxresearch-poc-shiny-apps/']
 - name: 'rocker/r-base'

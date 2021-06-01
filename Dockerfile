@@ -6,11 +6,9 @@ RUN ls -la
 
 RUN mkdir /tmp/fxresearch
 
-RUN ls -la ./market_data
-
 RUN cp -r ./* /tmp/fxresearch
 
-RUN ls -la
+RUN ls -la /tmp/fxresearch/market_data
 
 # install R packages required 
 # Change the packages list to suit your needs

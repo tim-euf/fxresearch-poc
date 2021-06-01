@@ -14,6 +14,8 @@ RUN ls -la /tmp/fxresearch
 # Change the packages list to suit your needs
 RUN R -e "install.packages('readr', repos='http://cran.rstudio.com/')"
 
+WORKDIR /tmp/fxresearch/market_data
+
 RUN Rscript /tmp/fxresearch/process_market_data.R
 
 #FROM r-base

@@ -7,3 +7,17 @@ RUN ls -la
 RUN R -e "install.packages('readr', repos='http://cran.rstudio.com/')"
 
 RUN Rscript ./process_market_data.R
+
+#FROM r-base
+
+# Create and change to the app directory.
+#WORKDIR /usr/src/app
+
+# Copy local code to the container image.
+#COPY . .
+
+# Install any R packages
+#RUN Rscript -e "install.packages('plumber')"
+
+# Run the web service on container startup.
+#CMD [ "Rscript", "server.R"]

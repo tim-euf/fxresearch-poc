@@ -6,7 +6,9 @@ RUN ls -la
 
 RUN mkdir /tmp/fxresearch
 
-COPY . /tmp/fxresearch
+RUN ls -la ./market_data
+
+RUN cp -r ./* /tmp/fxresearch
 
 RUN ls -la
 

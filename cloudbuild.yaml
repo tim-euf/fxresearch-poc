@@ -3,7 +3,10 @@ steps:
   id: Verzeichnis auflisten1
   args: ['ls', '-la']
 - name: 'bash'
-  id: Verzeichnis erstellen
+  id: Verzeichnis erstellen für root-dir der shiny-App
+  args: ['mkdir', 'fx-research-shiny-root']    
+- name: 'bash'
+  id: Verzeichnis erstellen für Daten
   args: ['mkdir', 'market_data']  
 - name: gcr.io/cloud-builders/gsutil
   args: ['cp', 'gs://fx-research-poc-1/market_data/population_by_country_2020.csv', './market_data/population_by_country_2020.csv']
@@ -14,7 +17,7 @@ steps:
   args: [ 'build', '-t', 'gcr.io/fxresearch-poc/rexample', '.' ]
 - name: 'gcr.io/cloud-builders/gsutil' 
   id: Kopieren der App in den Cloud Bucket
-  args: ['cp', '-rP', '*', 'gs://fx-research-poc-1/']
+  args: ['cp', '-rP', '*', 'gs://fx-research-poc-1/fx-research-shiny-root']
 #- name: 'gcr.io/cloud-builders/gcloud' 
 #  entrypoint: 'bash' args: ['gcloud' 'compute' , 'scp' , '*', 'username@instance-name:/home/directory' , '--zone=europe-west3-c', '--recurse']
 
